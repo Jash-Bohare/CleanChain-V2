@@ -1,0 +1,296 @@
+CleanChain API doc
+
+1) Wallet Login
+
+Method: POST
+
+URL: http://localhost:5000/auth/wallet-login
+
+Description: This endpoint allows users to log in using their wallet address.
+
+Request Body (JSON): 
+walletAddress (string): The wallet address of the user attempting to log in. This is a required parameter.
+
+Example Request Body:
+{
+  "walletAddress": ""
+}
+
+Response:
+Status Code: 200
+Content-Type: application/json
+Response Body:
+isNewUser (boolean): Indicates whether the user is new to the application.
+userData (object): Contains user-specific information.
+walletAddress (string): The wallet address of the user.
+Example Response Body:
+{
+  "isNewUser": true,
+  "userData": 
+{
+	  "walletAddress":""
+	}
+}
+
+
+
+2) Update Profile
+
+Method: PATCH
+
+URL: http://localhost:5000/auth/update-profile
+
+Description: This endpoint allows users to update their profile information, including their wallet address, username, and email.
+
+Request Body Parameters:
+The request body must be a JSON object containing the following parameters
+walletAddress (string): The user's wallet address.
+username (string): The desired username for the user's profile.
+email (string): The user's email address.
+
+Example Request Body:
+{
+  "walletAddress": "0x7",
+  "username": "7",
+  "email": "7@gmail.com"
+}
+
+Response:
+Upon a successful update, the endpoint will return a JSON response with the following structure:
+Status Code: 200
+Content-Type: application/json
+Response Body:
+message (string): A confirmation message indicating the success of the operation.
+Example Response Body:
+{
+  "message": ""
+}
+
+
+
+3) Show all Locations
+
+Method: GET
+
+URL: http://localhost:5000/api/locations
+
+Description: This endpoint retrieves a list of all locations from the server. It does not require any parameters in the request.
+
+Response:
+On a successful request, the server will respond with a status code of 200 and the response will be on JSON format. The response will be an array of location objects, each containing the following fields:
+id: Unique identifier for the location (string).
+name: Name of the location (string).
+lat: Latitude coordinate of the location (number).
+lng: Longitude coordinate of the location (number).
+rewardTokens: Number of reward tokens associated with the location (number).
+beforePhotoUrl: URL of a photo associated with the location before any changes (string).
+status: Current status of the location (string).
+claimedBy: Identifier of the user who claimed the location (string).
+Example Response Body:
+[
+    {
+        "id": "",
+        "name": "",
+        "lat": 0,
+        "lng": 0,
+        "rewardTokens": 0,
+        "beforePhotoUrl": "",
+        "status": "",
+        "claimedBy": ""
+    }
+]
+
+
+
+4) Show one specific Location
+
+Method: GET
+
+URL: http://localhost:5000/api/locations/{locationId}
+
+Description: This endpoint retrieves detailed information about a specific location identified by its unique ID.
+
+Path Parameters:
+locationId (string): The unique identifier for the location you wish to retrieve.
+
+Response:
+Upon a successful request, the API returns a JSON object with the following structure:
+id (string): The unique identifier of the location.
+name (string): The name of the location.
+lat (number): The latitude coordinate of the location.
+lng (number): The longitude coordinate of the location.
+rewardTokens (number): The number of reward tokens associated with the location.
+beforePhotoUrl (string): URL of the photo taken before any actions were performed at the location.
+afterPhotoUrl (string|null): URL of the photo taken after actions were performed at the location. This can be null if no photo is available.
+claimedBy (string): Identifier of the user who claimed the location.
+cleanedBy (string|null): Identifier of the user who cleaned the location. This can be null if no user has cleaned it.
+claimedAt (string): Timestamp indicating when the location was claimed.
+cleaned (boolean): Status indicating whether the location has been cleaned.
+Example Response Body:
+{
+  "id": "",
+  "name": "",
+  "lat": 0,
+  "lng": 0,
+  "rewardTokens": 0,
+  "beforePhotoUrl": "",
+  "afterPhotoUrl": null,
+  "claimedBy": "",
+  "cleanedBy": null,
+  "claimedAt": "",
+  "cleaned": true
+}
+
+
+
+5) Claim-Location
+
+Method: POST
+
+URL: http://localhost:5000/api/claim-location
+
+Description: This endpoint allows users to claim a specific location by providing their wallet address and the location identifier. The request requires the following parameters in the JSON body:
+
+Request Body (JSON): 
+walletAddress: The blockchain wallet address of the user making the claim.
+locationId: The unique identifier for the location being claimed.
+userLat: The latitude coordinate of the user's current location.
+userLng: The longitude coordinate of the user's current location.
+
+Example Request Body:
+{
+  "walletAddress": "",
+  "locationId": "",
+  "userLat": number,
+  "userLng": number
+}
+
+Response:
+Status :
+200 if location is claimed successfully.
+409 if already claimed by you.
+409 if already claimed by someone.
+
+
+
+6) Calculate Distance Between Two Points
+
+Method: GET
+
+URL: http://localhost:5000/api/test-distance
+
+Description: This endpoint calculates the distance between two geographical points specified by their latitude and longitude coordinates.
+
+Query Parameters:
+lat1 (float): Latitude of the first point.
+lng1 (float): Longitude of the first point.
+lat2 (float): Latitude of the second point.
+lng2 (float): Longitude of the second point.
+Example Response Body:
+{
+  "point1": {
+    "lat": float,
+    "lng": float
+  },
+  "point2": {
+    "lat": float,
+    "lng": float
+  },
+  "distanceInMeters": float,
+  "isNearby": boolean
+}
+point1: Contains the latitude and longitude of the first point.
+point2: Contains the latitude and longitude of the second point.
+distanceInMeters: The calculated distance between the two points in meters.
+isNearby: A boolean indicating whether the two points are considered nearby based on the distance.
+
+Example:
+For the request:
+GET http://localhost:5000/api/test-distance?lat1=29.5239&lng1=79.089&lat2=29.5147&lng2=79.089
+
+The response could look like:
+{
+  "point1": {"lat": 29.5239, "lng": 79.089},
+  "point2": {"lat": 29.5147, "lng": 79.089},
+  "distanceInMeters": 0,
+  "isNearby": true
+}
+This indicates that the two points are very close to each other.
+
+Query Params: 
+lat1 = 29.5239
+lng1 = 79.089
+lat2 = 29.5147
+lng2 = 79.089
+
+
+
+7) Retrieve User Locations
+
+Method: GET
+
+URL: http://localhost:5000/api/user/{userId}/locations
+
+Description: This endpoint is used to retrieve the locations associated with a specific user identified by the userId.
+
+Request Parameters:
+userId (path parameter): A unique identifier for the user whose locations are being requested. In this example, it is represented as 0xabc.
+
+Response:
+On a successful request (HTTP Status 200), the response will be in JSON format and will include the following structure and these details:
+locations: An array of location objects associated with the user. Each location object contains:
+id: A unique identifier for the location.
+name: The name of the location.
+lat: The latitude coordinate of the location.
+rewardTokens: The number of reward tokens associated with the location.
+claimedAt: The timestamp when the location was claimed.
+claimedBy: The identifier of the user who claimed the location.
+lng: The longitude coordinate of the location.
+cleanedBy: The identifier of the user who cleaned the location.
+cleaned: A boolean indicating if the location has been cleaned.
+beforePhotoUrl: A URL to a photo taken before any cleaning.
+afterPhotoUrl: A URL to a photo taken after cleaning.
+Expected Response Body:
+{
+  "locations": [
+    {
+      "id": "string",
+      "name": "string",
+      "lat": "number",
+      "rewardTokens": "number",
+      "claimedAt": "string",
+      "claimedBy": "string",
+      "lng": "number",
+      "cleanedBy": "string",
+      "cleaned": "boolean",
+      "beforePhotoUrl": "string",
+      "afterPhotoUrl": "string"
+    }
+  ]
+}
+
+
+
+8) Upload Image
+
+Method: POST
+
+URL: http://localhost:5000/api/upload/{locationId}
+
+Description: This endpoint allows users to upload an image file associated with a specific identifier. The image is uploaded as part of a form-data request.
+
+Request Body (JSON): 
+The request must include the following form-data parameter:
+afterImage (type:file): This parameter is used to upload the image file. It should be provided as a file upload in the form-data.
+
+Example Request Body:
+{
+    "message": "Image uploaded and Firestore updated.",
+    "afterPhotoUrl": "http://localhost:5000/uploads/1752914692584-Screenshot 2025-07-18 185404.png"
+}
+
+Response:
+Upon successful upload, the server will respond with confirmation message indicating the status of the upload. The response structure typically includes:
+Status (200): Indicates whether the upload was successful or if there was an error.
+Message: A descriptive message related to the upload process.
+Data: Additional information about the uploaded file, if applicable.
