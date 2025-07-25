@@ -129,14 +129,6 @@ const CompleteProfile = () => {
           </div>
         </div>
       </div>
-      <div className="flex space-x-8">
-        <a href="/map" className="text-gray-400 hover:text-white transition-colors">
-          Map
-        </a>
-        <a href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
-          Dashboard
-        </a>
-      </div>
     </div>
   );
 };

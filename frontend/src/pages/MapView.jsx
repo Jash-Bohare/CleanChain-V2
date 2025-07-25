@@ -10,11 +10,11 @@ const Navigation = () => (
         <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center">
           <span className="text-black font-bold text-sm">CC</span>
         </div>
-        <span className="text-white font-medium text-lg">Crypto Connect</span>
+        <span className="text-white font-medium text-lg">CleanChain</span>
       </div>
       <div className="flex items-center space-x-8">
         <a href="/" className="text-gray-400 hover:text-white transition-colors">Welcome</a>
-        <a href="/map" className="text-gray-400 hover:text-white transition-colors">Map</a>
+        <a href="/map" className="text-white font-medium">Map</a>
         <a href="/dashboard" className="text-gray-400 hover:text-white transition-colors">Dashboard</a>
       </div>
     </div>
