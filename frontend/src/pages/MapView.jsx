@@ -15,6 +15,7 @@ const Navigation = () => (
       <div className="flex items-center space-x-8">
         <a href="/" className="text-gray-400 hover:text-white transition-colors">Welcome</a>
         <a href="/map" className="text-gray-400 hover:text-white transition-colors">Map</a>
+        <a href="/dashboard" className="text-gray-400 hover:text-white transition-colors">Dashboard</a>
       </div>
     </div>
   </nav>

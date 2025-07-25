@@ -38,7 +38,8 @@ router.post('/:locationId', upload.single('afterImage'), async (req, res) => {
     await db.collection('locations').doc(locationId).update({
       afterPhotoUrl: publicUrl,
       afterImageUploaded: true,
-      status: 'awaiting-verification'
+      status: 'awaiting-verification',
+      cleanedAt: new Date().toISOString()
     });
 
     res.status(200).json({

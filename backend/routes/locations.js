@@ -50,6 +50,110 @@ router.get("/locations", async (req, res) => {
   }
 });
 
+// GET /cleaned-locations → returns locations awaiting verification
+router.get("/cleaned-locations", async (req, res) => {
+  try {
+    const snapshot = await db.collection("locations")
+      .where("afterImageUploaded", "==", true)
+      .get();
+    
+    const locations = [];
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      locations.push({
+        id: doc.id,
+        name: data.name,
+        lat: data.lat,
+        lng: data.lng,
+        rewardTokens: data.rewardTokens,
+        beforePhotoUrl: data.beforePhotoUrl,
+        afterPhotoUrl: data.afterPhotoUrl,
+        claimedBy: data.claimedBy,
+        cleanedBy: data.cleanedBy,
+        claimedAt: data.claimedAt,
+        cleanedAt: data.cleanedAt,
+        upvotes: data.upvotes || 0,
+        downvotes: data.downvotes || 0,
+        status: data.status || 'awaiting-verification'
+      });
+    });
+
+    res.json(locations);
+  } catch (err) {
+    console.error("Error fetching cleaned locations:", err);
+    res.status(500).json({ error: "Failed to fetch cleaned locations" });
+  }
+});
+
+// POST /vote → handle community voting
+router.post("/vote", async (req, res) => {
+  const { locationId, voteType, walletAddress } = req.body;
+
+  if (!locationId || !voteType || !walletAddress) {
+    return res.status(400).json({ error: "Missing required parameters" });
+  }
+
+  if (!['upvote', 'downvote'].includes(voteType)) {
+    return res.status(400).json({ error: "Invalid vote type" });
+  }
+
+  try {
+    const locationRef = db.collection("locations").doc(locationId);
+    const locationDoc = await locationRef.get();
+
+    if (!locationDoc.exists) {
+      return res.status(404).json({ error: "Location not found" });
+    }
+
+    const location = locationDoc.data();
+    const currentUpvotes = location.upvotes || 0;
+    const currentDownvotes = location.downvotes || 0;
+
+    // Update vote counts
+    const updateData = {};
+    if (voteType === 'upvote') {
+      updateData.upvotes = currentUpvotes + 1;
+    } else {
+      updateData.downvotes = currentDownvotes + 1;
+    }
+
+    await locationRef.update(updateData);
+
+    // Check if location should be marked as verified (simple threshold)
+    const newUpvotes = updateData.upvotes || currentUpvotes;
+    const newDownvotes = updateData.downvotes || currentDownvotes;
+    
+    if (newUpvotes >= 3 && newUpvotes > newDownvotes) {
+      await locationRef.update({
+        cleaned: true,
+        cleanedBy: location.claimedBy,
+        cleanedAt: new Date().toISOString(),
+        status: 'verified'
+      });
+      
+      // Award tokens to user
+      const userRef = db.collection("users").doc(location.claimedBy);
+      const userDoc = await userRef.get();
+      if (userDoc.exists) {
+        const userData = userDoc.data();
+        const currentTokens = userData.tokens || 0;
+        await userRef.update({
+          tokens: currentTokens + location.rewardTokens
+        });
+      }
+    }
+
+    res.status(200).json({ 
+      message: "Vote submitted successfully",
+      upvotes: newUpvotes,
+      downvotes: newDownvotes
+    });
+  } catch (err) {
+    console.error("Error submitting vote:", err);
+    res.status(500).json({ error: "Failed to submit vote" });
+  }
+});
+
 // POST /claim-location
 router.post("/claim-location", async (req, res) => {
   const { walletAddress, locationId, userLat, userLng } = req.body;
