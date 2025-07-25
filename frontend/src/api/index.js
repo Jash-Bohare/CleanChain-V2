@@ -44,3 +44,25 @@ export const testDistance = async ({ lat1, lng1, lat2, lng2 }) => {
   if (!res.ok) throw new Error('Failed to test distance');
   return await res.json();
 };
+
+export const fetchUserLocations = async (walletAddress) => {
+  const res = await fetch(`http://localhost:5000/api/user/${walletAddress}/locations`);
+  if (!res.ok) throw new Error('Failed to fetch user locations');
+  return await res.json();
+};
+
+export const fetchAllCleanedLocations = async () => {
+  const res = await fetch("http://localhost:5000/api/cleaned-locations");
+  if (!res.ok) throw new Error('Failed to fetch cleaned locations');
+  return await res.json();
+};
+
+export const voteOnLocation = async (locationId, voteType, walletAddress) => {
+  const res = await fetch("http://localhost:5000/api/vote", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ locationId, voteType, walletAddress }),
+  });
+  if (!res.ok) throw new Error('Failed to submit vote');
+  return await res.json();
+};
