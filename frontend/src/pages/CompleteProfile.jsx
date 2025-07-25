@@ -122,6 +122,14 @@ const CompleteProfile = () => {
               <button
                 onClick={handleSkip}
                 className="w-full py-2 text-gray-400 hover:text-white transition-colors text-sm"
+              >
+                Skip for now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex space-x-8">
         <a href="/map" className="text-gray-400 hover:text-white transition-colors">
           Map
         </a>
