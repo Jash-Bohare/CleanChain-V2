@@ -24,11 +24,10 @@ const Navigation = () => {
   };
 
   const navItems = [
-    { name: 'Logout', path: '/logout', icon: LogOut, action: handleLogout },
     { name: 'Map', path: '/map', icon: MapPin, action: () => navigate('/map') },
-    { name: 'Dashboard', path: '/dashboard', icon: BarChart3, action: () => navigate('/dashboard') },
     { name: 'Gallery', path: '/Gallery', icon: Image, action: () => navigate('/Gallery') },
-    { name: 'Profile', path: '/profile', icon: User, action: () => navigate('/profile') }
+    { name: 'Dashboard', path: '/dashboard', icon: BarChart3, action: () => navigate('/dashboard') },
+    { name: 'Logout', path: '/logout', icon: LogOut, action: handleLogout }
   ];
 
   const isActive = (path) => {
@@ -45,7 +44,7 @@ const Navigation = () => {
           <div className="flex items-center space-x-3">
             <div>
               <span className="text-white font-bold text-lg">CleanChain</span>
-              <p className="text-gray-400 text-xs">Eco Rewards Platform</p>
+              <p className="text-gray-400 text-xs">Proof of Cleanup on the Blockchain</p>
             </div>
           </div>
 

@@ -158,7 +158,7 @@ const Welcome = () => {
         
         {!walletAddress && (
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl blur-lg opacity-50 animate-pulse"></div>
+            
             <button
               onClick={handleConnectWallet}
               className="relative w-64 md:w-72 py-3 md:py-4 px-6 md:px-8 bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold rounded-xl shadow-xl hover:from-green-500 hover:to-emerald-600 transition-all text-lg md:text-xl mb-8 md:mb-10 lg:mb-12 border border-white/20"
@@ -175,10 +175,10 @@ const Welcome = () => {
         )}
         
         <div className="relative">
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">How It Works</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 text-center">How It Works??</h2>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10 lg:mb-12 w-full max-w-5xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-4 md:mb-6 w-full max-w-5xl">
           {steps.map((step, i) => (
             <div key={i} className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -196,8 +196,8 @@ const Welcome = () => {
           ))}
         </div>
       </main>
-      <footer className="py-3 md:py-4 text-center text-gray-500 text-xs bg-transparent relative z-10">
-        <div className="flex items-center justify-center space-x-4 mb-2">
+      <footer className="py-2 md:py-3 text-center text-gray-500 text-xs bg-transparent relative z-10">
+        <div className="flex items-center justify-center space-x-4 mb-1">
           <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
           <span>&copy; {new Date().getFullYear()} CleanChain. All rights reserved.</span>
           <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-500 to-transparent"></div>
