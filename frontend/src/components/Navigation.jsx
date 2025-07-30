@@ -43,9 +43,6 @@ const Navigation = () => {
         <div className="flex justify-between items-center p-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-green-400 to-emerald-500 rounded-xl flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-sm">CC</span>
-            </div>
             <div>
               <span className="text-white font-bold text-lg">CleanChain</span>
               <p className="text-gray-400 text-xs">Eco Rewards Platform</p>
