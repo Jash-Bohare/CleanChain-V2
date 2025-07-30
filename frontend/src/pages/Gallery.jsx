@@ -109,9 +109,8 @@ const Gallery = () => {
     const isVoting = votingStates[place.id];
 
     return (
-      <div className="relative group">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-400/10 to-emerald-500/10 rounded-xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
-        <div className="relative bg-[#1a1a1a]/80 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-green-400/50 hover:shadow-2xl transition-all duration-300 group-hover:scale-[1.02]">
+      <div className="relative">
+        <div className="bg-[#1a1a1a]/80 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden">
           {/* Before and After Photos */}
           <div className="relative">
             <div className="grid grid-cols-2 gap-1">
@@ -119,7 +118,7 @@ const Gallery = () => {
                 <img 
                   src={place.beforePhotoUrl || 'https://images.pexels.com/photos/378570/pexels-photo-378570.jpeg?auto=compress&cs=tinysrgb&w=400'} 
                   alt="Before cleanup"
-                  className="w-full h-32 sm:h-48 object-cover group-hover:brightness-110 transition-all duration-300"
+                  className="w-full h-32 sm:h-48 object-cover"
                 />
                 <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1">
                   <span className="text-white text-xs font-medium">Before</span>
@@ -129,7 +128,7 @@ const Gallery = () => {
                 <img 
                   src={place.afterPhotoUrl} 
                   alt="After cleanup"
-                  className="w-full h-32 sm:h-48 object-cover group-hover:brightness-110 transition-all duration-300"
+                  className="w-full h-32 sm:h-48 object-cover"
                 />
                 <div className="absolute top-2 left-2 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1">
                   <span className="text-white text-xs font-medium">After</span>
@@ -157,7 +156,7 @@ const Gallery = () => {
           
           <div className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-white font-bold group-hover:text-green-400 transition-colors text-sm sm:text-base">
+              <h3 className="text-white font-bold text-sm sm:text-base">
                 {place.name}
               </h3>
               {place.rewardTokens && (
