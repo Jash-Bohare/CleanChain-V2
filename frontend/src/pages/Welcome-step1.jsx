@@ -21,6 +21,7 @@ const WelcomeStep1 = () => {
 
   const [errors, setErrors] = useState({});
   const [connectingWallet, setConnectingWallet] = useState(false);
+  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     const walletAddress = localStorage.getItem('walletAddress');
@@ -99,7 +100,8 @@ const WelcomeStep1 = () => {
 
     const walletAddress = await connectWallet();
     if (!walletAddress) {
-      alert('Please connect your wallet to continue.');
+      setToast('Please connect your wallet to continue.');
+      setTimeout(() => setToast(null), 3000);
       setConnectingWallet(false);
       return;
     }
@@ -115,7 +117,8 @@ const WelcomeStep1 = () => {
       }
     } catch (err) {
       console.error('walletLogin error:', err);
-      alert('Something went wrong during wallet login.');
+      setToast('Something went wrong during wallet login.');
+      setTimeout(() => setToast(null), 3000);
       setConnectingWallet(false);
       return;
     }
@@ -134,11 +137,13 @@ const WelcomeStep1 = () => {
         localStorage.setItem('walletAddress', walletAddress);
         navigate('/welcome-step2');
       } else {
-        alert('Failed to update profile. Please try again.');
+        setToast('Failed to update profile. Please try again.');
+        setTimeout(() => setToast(null), 3000);
       }
     } catch (err) {
       console.error('updateUserProfile error:', err);
-      alert('An error occurred. Please try again later.');
+      setToast('An error occurred. Please try again later.');
+      setTimeout(() => setToast(null), 3000);
     }
 
     setConnectingWallet(false);
@@ -154,7 +159,12 @@ const WelcomeStep1 = () => {
   `;
 
   return (
-    <div className="min-h-screen bg-[#0d0d0d] relative overflow-hidden">
+    <div className="min-h-screen bg-[#0d0d0d] relative">
+      {toast && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 text-lg font-semibold">
+          {toast}
+        </div>
+      )}
       <Navigation />
 
       <div className="absolute bottom-0 left-0 opacity-20">

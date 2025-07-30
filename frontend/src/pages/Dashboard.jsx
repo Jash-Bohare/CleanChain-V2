@@ -19,6 +19,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [uploadingImage, setUploadingImage] = useState(null);
+  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     const initDashboard = async () => {
@@ -135,10 +136,12 @@ const Dashboard = () => {
       // Refresh the locations data
       await loadDashboardData();
       
-      alert('Image uploaded successfully!');
+      setToast('Image uploaded successfully!');
+      setTimeout(() => setToast(null), 3000);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Failed to upload image. Please try again.');
+      setToast('Failed to upload image. Please try again.');
+      setTimeout(() => setToast(null), 3000);
     } finally {
       setUploadingImage(null);
     }
@@ -218,6 +221,11 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] relative">
+      {toast && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 text-lg font-semibold">
+          {toast}
+        </div>
+      )}
       <Navigation />
       
       <div className="pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

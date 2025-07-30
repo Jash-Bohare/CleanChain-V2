@@ -46,6 +46,18 @@ async function seed() {
             claimedAt: null,
             cleaned: false,
         },
+        {
+            name: "Pandit Deendayal Energy University",
+            lat: 23.154149,
+            lng: 72.666893,
+            beforePhotoUrl: "https://biotechworldindia.in/wp-content/uploads/2023/05/1665172544823-1024x768.jpeg",
+            afterPhotoUrl: null,
+            rewardTokens: 10,
+            claimedBy: null,
+            cleanedBy: null,
+            claimedAt: null,
+            cleaned: false,
+        },
         // {
         //   name: "City Lake",
         //   lat: 28.6039,

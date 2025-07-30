@@ -14,6 +14,7 @@ const Gallery = () => {
   const [error, setError] = useState(null);
   const [votingStates, setVotingStates] = useState({});
   const [walletAddress, setWalletAddress] = useState(null);
+  const [toast, setToast] = useState(null);
 
   useEffect(() => {
     const loadGalleryData = async () => {
@@ -37,7 +38,8 @@ const Gallery = () => {
 
   const handleVote = async (placeId, voteType) => {
     if (!walletAddress) {
-      alert('Please connect your wallet to vote');
+      setToast('Please connect your wallet to vote');
+      setTimeout(() => setToast(null), 3000);
       return;
     }
 
@@ -50,10 +52,12 @@ const Gallery = () => {
       const updatedData = await getGalleryLocations();
       setPlaces(updatedData);
       
-      alert(`Vote submitted successfully! ${voteType === 'up' ? 'Upvoted' : 'Downvoted'}`);
+      setToast(`Vote submitted successfully! ${voteType === 'up' ? 'Upvoted' : 'Downvoted'}`);
+      setTimeout(() => setToast(null), 3000);
     } catch (error) {
       console.error('Vote error:', error);
-      alert(error.message || 'Failed to submit vote');
+      setToast(error.message || 'Failed to submit vote');
+      setTimeout(() => setToast(null), 3000);
     } finally {
       setVotingStates(prev => ({ ...prev, [placeId]: false }));
     }
@@ -239,6 +243,11 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-[#0d0d0d] relative">
+      {toast && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 text-lg font-semibold">
+          {toast}
+        </div>
+      )}
       <Navigation />
       
       <div className="pt-16 sm:pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
