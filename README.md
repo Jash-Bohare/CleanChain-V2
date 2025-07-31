@@ -224,50 +224,6 @@ npm run dev
 3. Get some test ETH from a faucet
 4. Connect wallet to the application
 
-## 📁 Project Structure
-
-```
-CleanChain-V2/
-├── frontend/                 # React application
-│   ├── src/
-│   │   ├── components/      # Reusable UI components
-│   │   ├── pages/          # Page components
-│   │   ├── api/            # API integration
-│   │   └── utils/          # Utility functions
-│   └── public/             # Static assets
-├── backend/                 # Node.js server
-│   ├── controllers/        # Request handlers
-│   ├── routes/            # API routes
-│   ├── firebase/          # Firebase configuration
-│   └── utils/             # Server utilities
-├── blockchain/             # Smart contracts
-│   ├── contracts/         # Solidity contracts
-│   ├── scripts/           # Deployment scripts
-│   └── hardhat.config.js  # Hardhat configuration
-└── README.md              # This file
-```
-
-## 🔧 API Endpoints
-
-### Authentication
-- `POST /api/auth/connect` - Connect wallet
-- `POST /api/auth/verify` - Verify wallet signature
-
-### Locations
-- `GET /api/locations` - Get all cleanup locations
-- `POST /api/locations/claim` - Claim a location
-- `POST /api/locations/upload` - Upload cleanup photos
-- `PUT /api/locations/:id/status` - Update location status
-
-### Users
-- `GET /api/users/profile` - Get user profile
-- `PUT /api/users/profile` - Update user profile
-- `GET /api/users/locations` - Get user's claimed locations
-
-### Voting
-- `POST /api/vote` - Submit vote on cleanup
-- `GET /api/vote/consensus` - Check voting consensus
-
 ## 🎯 Future Enhancements
 
 ### Planned Features
@@ -284,17 +240,6 @@ CleanChain-V2/
 - **DAO Governance** - Community-driven platform decisions
 - **Cross-chain Support** - Multi-blockchain compatibility
 
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
-
-### Development Workflow
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -305,12 +250,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Firebase** - For backend services
 - **Google Maps** - For location services
 - **Open Source Community** - For amazing tools and libraries
-
-## 📞 Support
-
-- **Email**: support@cleanchain.io
-- **Discord**: [CleanChain Community](https://discord.gg/cleanchain)
-- **Twitter**: [@CleanChainApp](https://twitter.com/CleanChainApp)
 
 ---
 
