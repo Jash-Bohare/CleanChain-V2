@@ -1,7 +1,10 @@
-# CleanChain 🌱
-**Earn ECO tokens for verified waste cleanups - Transparent, on-chain environmental impact tracking**
+# 🌱 CleanChain 
 
-## 🚨 Problem Statement
+> A decentralized platform that lets anyone clean dirty areas, prove it with geo-tagged evidence, and earn crypto rewards.
+
+---
+
+## Problem Statement
 
 ### The Environmental Crisis
 - **Global waste pollution** is reaching critical levels, with over 2 billion tons of municipal solid waste generated annually
@@ -9,91 +12,30 @@
 - **No transparent verification** system for environmental impact tracking
 - **Limited community engagement** in environmental conservation efforts
 
-### Why This Matters
+### Why This Matters??
 - **Immediate impact**: Every cleanup directly improves local environments
 - **Scalable solution**: Blockchain technology enables global participation
 - **Economic incentives**: Token rewards encourage sustainable behavior
 - **Community building**: Creates a network of environmental stewards
 
-## 💡 Solution / What It Does
+---
+
+## Solution / What It Does
 
 CleanChain is a decentralized platform that incentivizes environmental cleanup through blockchain-based verification and token rewards. Users can claim cleanup locations, submit photographic proof of their work, and earn ECO tokens upon community verification. The platform combines GPS tracking, photo verification, and community voting to create a transparent, gamified environmental impact system.
 
-### Core Workflow:
-1. **Discover** → Users find nearby cleanup locations on an interactive map
-2. **Claim** → Reserve a location within 15km radius
-3. **Clean** → Perform the cleanup and document with before/after photos
-4. **Verify** → Community votes on the quality and completion of work
-5. **Reward** → Earn ECO tokens for verified cleanups
+---
 
-## 🔄 Simple User Flow
+## Team Members:
+- Jash Bohare (Team Lead, Backend, Blockchain) <br>
+   -> Linkedin: https://www.linkedin.com/in/jash-bohare/
 
-```
-Connect Wallet → Complete Profile → Browse Map → Claim Location → 
-Upload Photos → Community Votes → Earn Tokens → Track Impact
-```
+- Jaineel Lakhia (Frontend and Integration)  <br>
+   -> Linkedin: https://www.linkedin.com/in/jaineel-lakhia1/
 
-### Detailed User Journey:
+---
 
-1. **Onboarding**
-   - Connect MetaMask wallet
-   - Complete profile with email and username
-   - Navigate to interactive map
-
-2. **Location Discovery**
-   - View cleanup locations on map
-   - Check distance (must be within 15km)
-   - Review location details and potential rewards
-
-3. **Cleanup Process**
-   - Claim a location (becomes unavailable to others)
-   - Perform the cleanup
-   - Upload before/after photos as proof
-
-4. **Verification & Rewards**
-   - Community members vote on cleanup quality
-   - Successful verifications earn ECO tokens
-   - Track environmental impact in dashboard
-
-## ✨ Key Features
-
-### 🗺️ **Interactive Map System**
-- Real-time location discovery
-- GPS-based proximity verification
-- Before/after photo documentation
-- Status tracking for all locations
-
-### 🏆 **Gamified Rewards**
-- ECO token rewards for verified cleanups
-- Community voting system
-- Achievement tracking
-- Environmental impact metrics
-
-### 👥 **Community-Driven Verification**
-- Peer-to-peer voting system
-- Transparent verification process
-- Quality control through community consensus
-- Anti-gaming mechanisms
-
-### 📊 **Personal Dashboard**
-- Track cleanup history
-- View earned tokens
-- Monitor environmental impact
-- Manage profile information
-
-### 🎨 **Modern Web Application**
-- Responsive design for all devices
-- Intuitive user interface
-- Real-time updates
-- Professional animations and effects
-
-### 🔐 **Blockchain Integration**
-- MetaMask wallet connection
-- Smart contract token distribution
-- Transparent transaction history
-- Decentralized verification
-
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### **Frontend**
 - **React.js** - Modern UI framework
@@ -128,7 +70,70 @@ Upload Photos → Community Votes → Earn Tokens → Track Impact
 - **Git** - Version control
 - **npm** - Package management
 
-## 🚀 How to Run Project Locally
+---
+
+## Core Workflow:
+1. **Discover** → Users find nearby cleanup locations on an interactive map
+2. **Claim** → Reserve a location within 15km radius
+3. **Clean** → Perform the cleanup and document with before/after photos
+4. **Verify** → Community votes on the quality and completion of work
+5. **Reward** → Earn ECO tokens for verified cleanups
+
+---
+
+## Key Features
+
+### **Interactive Map System**
+- Real-time location discovery
+- GPS-based proximity verification
+- Before/after photo documentation
+- Status tracking for all locations
+
+### **Gamified Rewards**
+- ECO token rewards for verified cleanups
+- Community voting system
+- Achievement tracking
+- Environmental impact metrics
+
+### **Community-Driven Verification**
+- Peer-to-peer voting system
+- Transparent verification process
+- Quality control through community consensus
+- Anti-gaming mechanisms
+
+### **Personal Dashboard**
+- Track cleanup history
+- View earned tokens
+- Monitor environmental impact
+- Manage profile information
+
+### **Modern Web Application**
+- Responsive design for all devices
+- Intuitive user interface
+- Real-time updates
+- Professional animations and effects
+
+### **Blockchain Integration**
+- MetaMask wallet connection
+- Smart contract token distribution
+- Transparent transaction history
+- Decentralized verification
+
+---
+<img width="1599" height="767" alt="Screenshot 2025-07-31 170518" src="https://github.com/user-attachments/assets/ee027ef7-fea9-4af2-bd84-51f81885ba9c" />
+<img width="1599" height="764" alt="Screenshot 2025-07-31 170713" src="https://github.com/user-attachments/assets/87f39651-cb29-4b4a-97b1-cc4506db79e4" />
+<img width="1599" height="767" alt="Screenshot 2025-07-31 170738" src="https://github.com/user-attachments/assets/fda4b776-4327-4109-bbdb-ec1e27cd3afb" />
+<img width="1577" height="753" alt="Screenshot 2025-07-31 170811" src="https://github.com/user-attachments/assets/c6e5b79d-b694-4387-a61d-cb90133714de" />
+
+---
+
+## Demo & Deliverables
+
+- **Demo Video Link:** https://youtu.be/8OnX9XjZ4_A
+
+---
+
+## How to Run Project Locally??
 
 ### Prerequisites
 - **Node.js** (v16 or higher)
@@ -224,7 +229,9 @@ npm run dev
 3. Get some test ETH from a faucet
 4. Connect wallet to the application
 
-## 🎯 Future Enhancements
+---
+
+## Future Enhancements
 
 ### Planned Features
 - **Mobile App** - Native iOS/Android applications
@@ -240,9 +247,13 @@ npm run dev
 - **DAO Governance** - Community-driven platform decisions
 - **Cross-chain Support** - Multi-blockchain compatibility
 
-## 📄 License
+---
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
 
 ## 🙏 Acknowledgments
 
